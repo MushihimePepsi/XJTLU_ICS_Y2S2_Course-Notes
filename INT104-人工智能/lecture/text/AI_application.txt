@@ -1,0 +1,779 @@
+=== Page 1 ===
+AI applications
+Yaran Chen
+Yaran.chen@xjtlu.edu.cn
+
+=== Page 2 ===
+2
+AI：Face recognition
+
+=== Page 3 ===
+3
+New AI Technology for Intelligent Marking (Source: CCTV-10 Science 
+and Education Channel)
+License plate number recognition technology supports intelligent 
+transportation applications
+AI：Image recognition
+
+=== Page 4 ===
+AI applications in life：……
+4
+smart navigation system
+Map
+navigation
+applications
+leverage
+artificial intelligence to achieve functions like
+route planning, real-time traffic information
+updates,
+and
+voice
+navigation
+prompts,
+helping people travel more conveniently
+Smart home devices
+intelligent recommendation system
+Intelligent security monitoring
+Smart speakers, smart lamps, and smart
+home appliances can be remotely controlled
+and have automated scene Settings through
+mobile phone apps or voice commands,
+bringing convenience to people's lives.
+E-commerce platforms and music platforms
+will,
+based
+on
+users'
+browsing
+history,
+purchase records, collection preferences and
+other
+data,
+use
+artificial
+intelligence
+algorithms
+to
+recommend
+personalized
+products, videos, music
+Smart cameras installed in residential areas,
+shopping malls, homes and other places can
+perform face recognition, behavior analysis
+and
+other
+functions
+through
+artificial
+intelligence technology. For instance, when
+abnormal behaviors
+
+=== Page 5 ===
+AI Systems
+A Typical Workflow for AI Systems
+1. Formulate Problem: Define the problem, establish goals, and 
+translate business/research context into a well-defined AI task.
+2. Collect Data: Gather relevant, high-quality data, including 
+sourcing, cleaning, and preprocessing.
+3. Feature Extraction: Identify and select informative attributes 
+from raw data for machine learning.
+4. Machine Learning: Apply algorithms to train a model, tune 
+parameters, and validate performance.
+5. System Deployed: Integrate the model into production, monitor, 
+and maintain it for real-time use.
+Hierarchy of AI Intelligence
+• Computation Intelligence: Maps Features to a 
+unified Label. Key applications: Classification, Outlier 
+Detection.
+• Perception Intelligence: Maps Features to 
+multiple, non-unified Labels. E.g., Emotion Detection.
+• Creative Intelligence: Generates novel content 
+beyond pattern matching, augmenting human creativity.
+• Universal Intelligence: Hypothetical ability to learn 
+any human intellectual task (AGI goal).
+
+=== Page 6 ===
+6
+Clustering
+Feature Extraction
+Haar Features
+Spatial Pyramid Matching
+Histogram of Gradients (HoG
+Local Binary Patterns (LBP)
+
+=== Page 7 ===
+7
+Model Training
+Output 
+parameter 
+values 
+Prepare training data: Including feature 
+representation and class labels
+Choose classifier type and determine 
+hypothesis parameters: represented as 
+models for each class or discriminant functions
+Parameter estimation 
+min. loss or max. likelihood
+Minimize loss or maximize likelihood
+
+=== Page 8 ===
+11
+The human brain contains many (approximately 80 billion) neurons.
+Each neuron consists of two parts: the cell body and dendrites.
+If the threshold is considered as an input x0 with weight w0j:
+yj represents the output of neuron j, and f represents the activation 
+function.
+Neural Networks
+
+=== Page 9 ===
+12
+Input
+Output
+Single-layer Neural Network
+Neural Networks
+
+=== Page 10 ===
+13
+Hidden Layer
+Neural Networks
+Input Layer
+Output Layer
+Multi-layer Neural Network
+Input to the j-th output neuron:
+Input to the h-th hidden neuron:
+
+=== Page 11 ===
+14
+Classifications
+Neural Networks
+Dog
+Cat
+Tiger
+Loss function
+Predictions
+Loss function
+Age Prediction
+43 years old
+41 years old
+40
+20
+
+=== Page 12 ===
+15
+Convolution Operation Using Local Structures in Images
+Convolutional Neural Networks
+考虑5x5大小的窗口
+结点可排列成图
+像(卷积)
+卷积操作
+Consider a 5x5 window
+Total 25 
+parameters
+Nodes can be arranged 
+as an image (convolution)
+Convolution Operation
+Weighted Sum
+
+=== Page 13 ===
+16
+原始图像200x200
+滤波图像196x196
+Using Local Connections + Weight Sharing:
+•
+Total 25 Parameters!
+•
+Weight Sharing, Translation Invariant
+Average pooling: Take the Average
+Max pooling: Take the Maximum
+Convolutional Neural Networks
+Pooling: Enhancing Network Robustness,
+Invariance to Deformations and Translations,
+Increasing Receptive Field
+5x5 
+Convolution 
+Operation
+2x2 Region 
+Pooling
+•Image Size: 196x196
+After Pooling : 98x98
+Original Image: 
+200x200
+Filtered Image: 
+196x196
+
+=== Page 14 ===
+17
+Convolutional Neural Networks
+Low-level Feature
+High-level Feature
+Mid-level Feature
+Pooling
+Pooling
+Conv
+Conv
+Receptive field grows progressively
+
+=== Page 15 ===
+18
+Supporting Parallel Processing Technology 
+Attention Module models long-term dependencies
+Provides a unified architecture for vision and language processing
+GPT-3
+ChatGPT
+2018
+2020
+2022
+Decoder structure
+175 billion parameters
+Human-level RL
+175 billion parameters
+GPT-4V
+•Trillion parameter level
+•Multimodal AI
+2023
+Sora
+2024
+speech-text-speech
+image-text-image
+Provide solutions for unified 
+knowledge representation and 
+reasoning, as well as for world 
+perception and modeling
+Multimodal 
+understanding
+Multimodal 
+generation
+Single Modal
+LLM
+Multimodal
+2019
+BERT
+T5
+•Encoder structure
+•Encoder-decoder 
+structure
+Transformer
+
+=== Page 16 ===
+19
+Extract Key Points Features
+Image-to-Face Recognition Matching with a Face Database
+Face 
+Detection
+Keypoint
+Localization
+Storage
+Feature 
+Extraction
+Dataset
+Face 
+Detection
+Keypoint
+Localization
+Feature 
+Extraction
+Face Alignment
+Liveness 
+Detection
+Personal 
+Information
+Application: Face Recognition
+
+=== Page 17 ===
+20
+•
+Face Detection: Locating the position of faces in images.
+Haar feature-based classifiers, DPM, and DNNs like MTCNN.
+•
+Keypoint Localization: Determining key facial features such as eyes, nose, and mouth.
+DNNs, such as Dlib's facial landmark detector or other CNN-based methods.
+•
+Face Alignment: Aligning different faces to the same pose and position for subsequent processing.
+keypoint localization, use geometric to align faces.
+•
+Liveness Detection: Determining whether the input face is from a real person rather than a photo or video.
+DNNs combined with multiple sensors for multimodal analysis, or detect actions.
+•
+Face Feature Extraction: Converting face images into fixed-length feature vectors.
+DNNs such as FaceNet and ArcFace to extract feature vectors from faces.
+•
+Feature Value Comparison: Finding the most similar feature vectors to identify corresponding faces.
+Distance metrics to compare the extracted feature vectors with those in the database.
+•
+Personal Information: Completing the final face recognition task.
+Retrieve personal information from the database.
+Application: Face Recognition
+
+=== Page 18 ===
+21
+Application: Face Recognition
+Dynamic Recognition
+•Face Capture and Identity 
+Verification
+•Parallel computing.
+Self-service terminal 
+Counter system 
+Mobile Finance/Marketing
+
+=== Page 19 ===
+22
+Object Detection Methods Based on Machine Learning
+HOG
+LBP
+Haar-Like,
+SIFT
+.....
+SVM
+Decision Trees
+Random Forests
+Boosting
+.....
+•
+Fast speed, simple
+•
+Manually designed features, poor performance in 
+complex scenes, dim lighting, or occlusion
+Application: Object Detection
+Extract 
+Bounding 
+Boxes
+Extract 
+Features
+Classify
+Resul
+t
+
+=== Page 20 ===
+23
+Two-Stage Detection:
+•
+Fast RCNN
+•
+Faster RCNN
+•
+Extract Regions of Interest 
+(RoIs)
+•
+Detect and Classify RoIs
+One-Stage Detection:
+End-to-end output of detection box 
+regression and classification results
+Application: Object Detection
+Object Detection Methods Based on Machine Learning
+Cat
+Input
+Result
+Conv+Pool
+FCN
+RoI Pooling
+Reg
+Conv
+Clf
+Yolo(You Only Look Once)
+Input
+Result
+Conv+Pool
+Box Regression
+
+=== Page 21 ===
+24
+Chang, ITSM 2017
+Application: Object Detection
+Vehicle Object Detection
+
+=== Page 22 ===
+25
+Application: Object Detection
+Autonomous Driving
+
+=== Page 23 ===
+26
+Optical Character Recognition, OCR：
+•Convert color images to 
+grayscale
+•Binarize images
+•Detect and correct image 
+skew angles
+•Geometric correction
+....
+•Template matching
+•Deep learning methods
+....
+•Line detection
+•Angle detection
+•Page layout analysis
+....
+Input
+Preprocessing
+Text Detection
+Text Recognition
+Output
+Application: Image-Text Detection
+Model
+Model
+Calculate Distance
+
+=== Page 24 ===
+27
+Optical Character Recognition, OCR：
+Text Recognition
+Feature Extraction: HOG/ Deep Features
+Classifier: Provide candidate categories.
+•
+Statistical Classifiers, Support Vector Machines (SVM), NN, etc.
+•
+DNN: Joint learning of features and classifiers.
+Application: Image-Text Recognition
+
+=== Page 25 ===
+28
+Application: Image-Text Recognition
+
+=== Page 26 ===
+29
+•
+Acoustic Model：Trained on large amounts of speech data (covering various accents, ages, genders, speaking 
+rates, etc.) using GMM-HMM/DNN-HMM
+•
+Language Model: Trained on various textual corpora.
+Application: Speech Recognition
+Feature Extraction
+Decoder
+Feature Extraction
+Language Model
+Acoustic Model
+Recognition Result
+Speech data
+Textual  data
+Speech Recognition Process
+
+=== Page 27 ===
+30
+Audio Signal
+State Sequence
+Feature 
+Sequence
+Phoneme
+Sequence
+Word Sequence
+Language 
+Model
+Acoustic 
+Model
+Speech Recognition Process
+Application: Speech Recognition
+
+=== Page 28 ===
+31
+Acoustic Model：GMM-HMM，DNN-HMM
+GMM-HMM
+DNN-HMM
+Application: Speech Recognition
+Feature Sequence
+Phoneme Sequence
+Feature Sequence
+
+=== Page 29 ===
+32
+Application: Speech Recognition
+
+=== Page 30 ===
+研究现状主流的语音合成方法
+Text Analysis
+Acoustic Model
+Vocoder 
+今天天气不错
+j ing1 t ian1 t
+ian1 q i4 b u2 
+c uo4
+33
+Extract pronunciation and 
+prosody
+•
+Text normalization
+•
+Phoneme conversion
+•
+Prosody prediction
+Generate acoustic features
+•
+Tacotron 1/2
+•
+Deep Voice 1/2/3
+•
+Transformer TTS
+•
+FastSpeech/FastSpeech 2
+•
+Glow-TTS
+•
+BVAE-TTS
+Synthesize speech signals
+•
+Griffin-Lim
+•
+WORLD/STRAIGHT
+•
+WaveNet/Parallel WaveNet
+•
+WaveGlow/FloWaveNet
+•
+WaveRNN/LPCNet
+Both text analysis and vocoder have some general solutions, while the main focus of works is acoustic model.
+Application: Text-to-Speech
+Text-to-Speech Process
+
+=== Page 31 ===
+34
+Transformer-based Acoustic Model
+Application: Text-to-Speech
+FastSpeech2, ICASSP 2021
+
+=== Page 32 ===
+35
+Metaverse
+Virtual Humans/Avatars
+AIGC Content Creation
+Emotion Accent Dialect Language
+Generation and Verification
+Human-Machine Interaction 
+Personalization
+Application: Text-to-Speech
+
+=== Page 33 ===
+Machine Learning vs. Deep learning
+9
+Machine Learning (ML)
+Requires human experts to define features (e.g., "has wheels"). 
+The computer then classifies based on this predefined 
+checklist. This is called manual feature engineering.
+Deep Learning (DL)
+Automatically learns features from raw data using a Neural 
+Network. It excels at complex tasks like image and speech 
+recognition, removing the need for manual feature 
+engineering.
+
+=== Page 34 ===
+First-Generation AI 
+(Symbolism)
+Core Principle:Simulates logical reasoning by 
+manipulating human-readable symbols.
+Key Driver:Knowledge(Expert Systems, Rules)
+Key Tech:Knowledge Graphs, Inference Engines
+Example: IBM 
+DeepBlue
+Defeated Chess World 
+Champion Kasparov (1997)
+Second-Generation AI 
+(Connectionism)
+Core Principle:Intelligence emerges from the interaction 
+of simple, interconnected units.
+Key Driver:Data(Statistical Learning, Big Data)
+Key Tech:Neural Networks, Large Language Models 
+(LLMs)
+Example: AlphaGo
+Defeated Go World Champion 
+Lee Sedol (2016)
+The two phases of AI
+
+=== Page 35 ===
+The Core of AI - Neural Network Algorithms
+Evolution Timeline
+1950s:Machine Learning emerges.
+1990s:Neural Networks (CNN, 
+RNN, GAN) flourish.
+2017:Transformer architecture 
+proposed.
+2020:Rise of large-scale pre-trained 
+models.
+2022:ChatGPT released to the 
+public.
+2024:Emergence ofReasoning
+Large Models.
+Key Models and Technologies
+Machine 
+Learning
+Foundation of 
+modern AI systems
+Neural 
+Networks
+CNNs, RNNs, GANs
+Transformer
+"Attention Is All 
+You Need"
+LLMs
+GPT Series & BERT 
+Series
+
+=== Page 36 ===
+39
+The Core of Artificial Intelligence — Neural Network Algorithms
+推理
+大模型
+OPENAI
+-o1
+DEEP
+SEEK-
+R1
+非推理大模型
+2024年
+KIMI-
+k1.5
+Gemini 
+2.0
+Parameter 
+classificati
+on based 
+on a 
+specific 
+range of 
+data
+
+=== Page 37 ===
+40
+The Essence of Neural Networks: It's All About "Guessing"
+Y = aX+b
+Y = a1X+a2X²+...
+Given X=1,Y=2；X=2,Y=3
+Method: Use algebra.
+Process: With two known points (x1, y1) and 
+(x2, y2), set up two equations and solve for the 
+unknown variables 'a' and 'b’.
+Result: An exact, analytical solution. This is 
+the traditional method taught in schools and math 
+classes.
+Method: Guess and Check (Iterative Refinement).
+Process:1. Start with random initial values for 
+'a' and 'b'.
+2. Calculate the error (the difference between the 
+guess and the real value).
+3. Use the error to refine the next guess.
+4. Repeat this cycle thousands of times.
+Result: An approximate, but often very good 
+solution. This is how machine learning algorithms often 
+work.
+Machine Learning
+Deep Learning
+RNN：循环神经网络，循环串
+行猜（用前一个字猜后一个字）。
+但长文本算力限制，无法逼近
+DCNN：A Radical Shift Every 
+element in the input is 
+connected to every other 
+element, regardless of their 
+position in the sequence.
+TRANSFORMER"Attention
+Allows
+the model to dynamically weigh
+the
+importance
+of
+different
+input parts relative to each
+other.
+。
+Understanding Context
+Ideal for Machine 
+Translation, Text 
+Generation (ChatGPT), 
+and any task requiring 
+deep contextual 
+understanding.
+
+=== Page 38 ===
+41
+ChatGPT has pushed AI into the era of Artificial General Intel.
+•
+In November 2022, OpenAI released ChatGPT, which demonstrated unprecedented conversational ability
+and saw explosive user growth. This ignited a global "large model boom.“
+•
+In China, a "hundred-model war" ensued, with major players like Baidu, Alibaba, Tencent, and Huawei
+developing their own LLMs, accelerating innovation and expanding AI applications.
+AI发展历程
+来源:CNCF
+开源
+
+=== Page 39 ===
+42
+The Problem with Early Models: Lack of "Reasoning"
+"Parroting" Instead of 
+"Thinking"
+• Early models excelled at regurgitating information 
+and stitching text together, mimicking human 
+language without true understanding.
+• They failed at executing step-by-step logic and 
+were highly prone to "hallucinations"—inventing 
+plausible but false facts.
+• Critical limitation: They lacked the ability to 
+reason, making them unreliable for complex 
+problem-solving.
+The Rise of Reasoning 
+Models (2024)
+• Cutting-edge models like OpenAI o1, DeepSeek-
+R1, and Kimi-k1.5 are engineered to "think step-by-
+step," decomposing problems logically.
+• Capabilities expanded to solve complex multi-step 
+math problems, write high-quality code, and answer 
+advanced scientific questions.
+• In rigorous technical evaluations, their proficiency 
+now rivals that of a PhD student in specialized STEM 
+fields.
+
+=== Page 40 ===
+The inference of LLM
+43
+
+=== Page 41 ===
+The inference of LLM
+44
+
+=== Page 42 ===
+45
+The inference of LLM
+
+=== Page 43 ===
+46
+The inference of LLM
+
+=== Page 44 ===
+DeepSeek's Insight: Reasoning Through RL
+DeepSeek showed that complex fine-tuning might not be necessary. 
+Instead,pure reinforcement learning (RL)could be the key to teaching 
+reasoning.
+How it works:The model (agent) attempts to solve problems and 
+receives immediate feedback (reward). Through trial and error, it learns to 
+reason effectively, experiencing "Aha moments."
+Benefits:This method is more resource-efficient than traditional fine-
+tuning and develops robust, generalizable reasoning skills that apply across 
+different tasks.
+Open-Source Commitment:DeepSeek released powerful 
+reasoning models that can run on smaller consumer-grade computers, 
+democratizing access to advanced AI capabilities.
+Figure: The Reinforcement Learning (RL) Cycle
+Agent • Environment • Action • Reward
+
+=== Page 45 ===
+Deepseek
+48
+
+=== Page 46 ===
+50
+Auxiliary Enhancement: Knowledge Graph+RAG
+Private KB
+知识图谱
+
+=== Page 47 ===
+Manus: general AI assistant
+
+=== Page 48 ===
+52
+An intelligent agent is 
+a system that 
+perceives the 
+environment, 
+senvironment, selects 
+actions, and moves 
+towards goals 
+autonomously!
+Overview of Intelligent Agents
+

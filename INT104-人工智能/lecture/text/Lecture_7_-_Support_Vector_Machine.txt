@@ -1,0 +1,224 @@
+=== Page 1 ===
+INT104 Artificial Intelligence
+Support Vector Machine
+Linearly Saparable
+Ideally, if the feature resulted is good enough, a simple linear function would solve the problem 
+of classification.
+But the relationship between samples is not necessary to be a linear relationship.
+Logic Function as Linear Combination
+We know consider the most basic logic functions: AND & OR & XOR
+How can we find the proper linear discriminant function?
+Lecture 7 - Support Vector Machine
+Dr. Shengchen Li
+Associate Professor
+Department of Intelligence Science
+Xi'an Jiaotong-Liverpool University
+22
+Wednesday
+Lecture 7 - Support Vector Machine - 1
+
+=== Page 2 ===
+Large Margin Classification
+If classes are linearly separable, two classes can be separated with a straight line
+Motivation: Many Separating Hyperplanes, Which One 
+to Choose?
+Assume a binary classification dataset:
+Training data: 
+﻿
+Feature vector: 
+﻿
+Label: 
+﻿
+A linear decision boundary in 
+﻿ is a hyperplane:
+Prediction rule:
+SVM pursues the widest possible street between classes
+{(x
+​, y
+​)}
+​
+i
+i
+i=1
+n
+x
+​ ∈
+i
+Rd
+y
+​ ∈
+i
+{+1, −1}
+Rd
+​ =
+y^
+sign(w x +
+⊤
+b)
+Lecture 7 - Support Vector Machine - 2
+
+=== Page 3 ===
+Correct classification condition for a sample 
+﻿:
+Support Vector
+Distance to a Hyperplane (Geometric Quantity)
+Consider the hyperplane 
+﻿.
+The signed distance from a point 
+﻿ to 
+﻿ is:
+﻿ is the Euclidean norm of 
+﻿
+The sign indicates which side of the hyperplane the point lies on
+For a labeled sample 
+﻿, define the geometric margin:
+The margin of the classifier 
+﻿ on the dataset:
+(x
+​, y
+​)
+i
+i
+y
+​(w x
+​ +
+i
+⊤
+i
+b) > 0
+H = {x : w x +
+⊤
+b = 0}
+x
+H
+dist
+​(x, H) =
+±
+∥w∥
+w x + b
+⊤
+∥w∥
+w
+(x
+​, y
+​)
+i
+i
+γ
+​ =
+i
+​
+∥w∥
+y
+​(w x
+​ + b)
+i
+⊤
+i
+(w, b)
+γ =
+​γ
+​
+i
+min
+i
+Lecture 7 - Support Vector Machine - 3
+
+=== Page 4 ===
+Lagrange Multiplier
+Optimisation: Largest Street (margin)
+Constrains: Saparable Hyper-plane
+Mathematically the objective of optimisation with contrains (essentially a Lagrange Multiplier) is:
+Feature Scales
+The decision boundary could be much better if the feature is properly scaled.
+Hard Margin Classification
+All instances being off the street and on the right side is named “hard margin classification”
+L(w, b, α) =
+​∥w∥+
+2
+1
+2
+​α
+​(1 −
+i=1
+∑
+n
+i
+y
+​(w x
+​ +
+i
+⊤
+i
+b))
+The main limitation of hard margin classification is
+The data must be linearly separable
+There are little outliers
+Lecture 7 - Support Vector Machine - 4
+
+=== Page 5 ===
+Soft Margin Classification
+Soft Margin Classification provides more flexibility
+Polynomial Feature
+Polynomial Kernel
+The algorithm balances
+The width of street
+The amount of margin violations
+A hyper-parameter C is defined
+A low value of C leads to more margin violation
+A high value of C limits the flexibility
+A second feature could be added such as 
+﻿
+x
+​ =
+2
+(x
+​)
+1 2
+A kernel can be used instead of adding the polynomial features
+Lecture 7 - Support Vector Machine - 5
+
+=== Page 6 ===
+Similarity Feature
+Samples could be clustered with a landmark (reference point)
+The similarity function could be defined as a Gaussian Radial Basis Function
+Gaussian RBF Kernel
+ϕ
+​(x, l) =
+γ
+e−γ∣∣x−l∣∣2
+Lecture 7 - Support Vector Machine - 6
+
+=== Page 7 ===
+Multi-class Classification
+Lecture 7 - Support Vector Machine - 7
+
+=== Page 8 ===
+Multi-class Classification
+Multi-class Classification
+Lecture 7 - Support Vector Machine - 8
+
+=== Page 9 ===
+Perceptrons
+The boundaries between classes are not necessary linear but can be approximate as a 
+combination of linear functions.
+There is a threshold process after the output of each neuron, which is named as activation 
+function
+Deep Learning
+Perceptron is a basic unit of Neural Network.
+Neural Networks with multiple layers are considered as deep learning systems.
+The extension along space axis results Convolutional Neural Network (with some simplication)
+The extension along time axis results Recurrent Neural Network (with more controls between 
+time slices)
+SVM Regression
+Fit as many instances as possible on the street
+Limit margin violations
+Could be single layer or multiple layer
+Width of street is controlled by a hyper-parameter ϵ
+Lecture 7 - Support Vector Machine - 9
+
+=== Page 10 ===
+SVM Regression
+Kernel tricks could also be used
+Lecture 7 - Support Vector Machine - 10
+

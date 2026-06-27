@@ -1,0 +1,510 @@
+=== Page 1 ===
+INT104 Artificial Intelligence
+Counting Theories & Naive Bayes
+Start with rolling a dice
+When we roll a dice for 60 times, the results we expected are:
+which will almost never happen
+What we get is usually
+Bayesian
+Not necessary
+The knowledge we have (or say the results we expect) is considered as prior probability (or 
+prior knowledge)
+The results we obtained in the experiment are considered as posterior probability
+Lecture 5 - Counting Theories & Naive Bayes
+Dr. Shengchen Li
+Associate Professor
+Department of Intelligence Science
+Xi'an Jiaotong-Liverpool University
+times
+10
+10
+10
+10
+10
+10
+times
+12
+7
+11
+8
+9
+13
+Does that mean the knowledge we have
+﻿ is wrong?
+✍️
+p(X = i) =
+​6
+1
+2
+2026
+Case
+1
+2
+3
+4
+5
+6
+Case
+1
+2
+3
+4
+5
+6
+Lecture 5 - Counting Theories & Naive Bayes - 1
+
+=== Page 2 ===
+Bayes' Rule
+The famous Bayes' Rule states the relationship between prior probability distribution and 
+posterior probability distribution
+where ﻿ is considered as a class, 
+﻿is considered as a set of sampleswith engaged attributes
+Bayes' Rule can be used for various purposes such as parameterestimation, classification and 
+model selection.
+Model Likelihood
+Model likelihood represents how likely a model will be observedaccording to the given posterior 
+and prior probability hence can be used for model selection.
+Given a dataset, the observation remain the same for different classes / samples.
+Model Likelihood
+Rolling a dice is boring, we now roll a coin instead.
+Unlike Frequentist, Bayesian considers the distribution of unmet data besides observed 
+experiments
+✍️
+P(c∣x) =
+​
+P(x)
+P(c)P(x ∣c)
+(1)
+c
+x
+﻿is named as prior probability
+﻿is named as likelihood
+﻿is named as posterior probability
+﻿is considered as evidence factor (observation)
+P(c)
+P(x∣c)
+P(c∣x)
+P(x)
+Likelihood =
+​
+PirorProbability
+PosteriorProbability × Observation
+(2)
+Using Θ to represent the parameters in the model, calculate model likelihood for the following 
+two models given the experiment results "THHTTTHTTH"
+﻿&
+﻿
+﻿&
+﻿
+p(head) = 0.5
+p(tail) = 0.5
+p(head) = 0.4
+p(tail) = 0.6
+Lecture 5 - Counting Theories & Naive Bayes - 2
+
+=== Page 3 ===
+Frequentists choose the model with highest likelihood as the best model, which is known as 
+Maximum Likelihood Estimation (MLE).
+Log-likelihood
+When the number of samples increases, even computer may not be able to calculate correctly.
+The Model likelihood of dataset 
+﻿ for a candidate model whose parameter sets are 
+﻿ has
+a likelihood of
+For easier calculation, log-likelihood is commonly used which replace multiplications with 
+additions i.e.
+The base of logarithm does not matter but a base 2 or 16 could lead to a stronger practical 
+meaning in computer-based systems
+Another Example
+Occam's razor (size principle): the model favours the simplest (smallest) hypothesis consistent  
+with the data
+An example of showing overfit
+For a set 
+﻿, can you calculate the model likelihood for "The power of 2 
+under 100 except 32"?
+D
+Θ
+L = p(D∣Θ) =
+​p(x∣Θ)
+x∈D
+∏
+(3)
+LL = log p(D∣Θ) =
+​log p(x∣Θ)
+x∈D
+∑
+(4)
+For a set
+﻿, which of the following rule has a higher likelihood?
+D = {16,  8,  2,  64}
+﻿ : This is a set containing powers of two under 100.
+﻿: This is a set containing even numbers below 100.
+h
+​
+two
+h
+​
+even
+D = {16,  8,  2,  64}
+Lecture 5 - Counting Theories & Naive Bayes - 3
+
+=== Page 4 ===
+If a new sample collected is 32, can you calculate the posterior probability and model 
+likelihood?
+Likelihood & Entropy
+Suppose we have a dataset 
+﻿(as the training dataset), where a model
+﻿proposed (in the 
+form of the probability mass distribution of symbols) are 
+﻿.
+Now there is a separate dataset 
+﻿such that 
+﻿.
+Assume there are 
+﻿ samples in dataset 
+﻿ and 
+﻿ samples in dataset 
+﻿. The likelihood of 
+dataset P can be written as
+Likelihood & Entropy
+Likelihood & Entropy
+Q
+Q
+Q = {q
+​, q
+​, … , q
+​}
+1
+2
+l
+P
+P = {p
+​, p
+​, … , p
+​}
+1
+2
+l
+N
+P
+M
+Q
+​p
+​
+i=1
+∏
+l
+i
+Np
+​i
+(5)
+The likelihood can then be written in a logarithm scale then averaged as per sample
+which is the (negtive) entropy of 
+﻿.
+L =
+​ log
+​p
+​ =
+N
+1
+i=1
+∏
+l
+i
+Np
+​i
+​
+​Np
+​ log p
+​ =
+N
+1
+i=1
+∑
+l
+i
+i
+​p
+​ log p
+​
+i=1
+∑
+l
+i
+i
+(6)
+P
+Similarly, the likelihood of dataset 
+﻿ given model 
+﻿can be written as (in a scale of logarithm 
+and on per sample basis)
+P
+Q
+which is the (negative) entropy between 
+﻿ and 
+﻿.
+L =
+′
+​ log
+​q
+​ =
+N
+1
+i=1
+∏
+l
+i
+Np
+​i
+​
+​Nq
+​ log p
+​ =
+N
+1
+i=1
+∑
+l
+i
+i
+​q
+​ log p
+​
+i=1
+∑
+l
+i
+i
+(7)
+P
+Q
+Hence the difference between the cross entropy of 
+﻿ & 
+﻿ and the entropy of 
+﻿ is 
+P
+Q
+P
+Lecture 5 - Counting Theories & Naive Bayes - 4
+
+=== Page 5 ===
+Bayesian Estimation & Laplacian Correction
+Considering the fact that if a case never appeared in the trainingdataset, how the model 
+likelihood will be effected?
+This is known as a zero-point problem
+A smooth process can be performed by introducing prior probabilitydistribution, which is 
+known as Bayesian Estimation
+More commonly, an uniform distribution is used as the prior probability distribution, in which 
+case, it is called Laplacian Correction
+Bayes' Rule for Classification
+As the observation is same (the same training dataset), we have
+Bayes' Rule for Classification
+So we need to find the likelihood and the prior probability
+which is the relative entropy between 
+﻿ and 
+﻿. Relative entropy is also known as the 
+Kullback-Leibler divergence. 
+KL
+​ =
+Div
+−
+​p
+​ log q
+​ +
+i=1
+∑
+l
+i
+i
+​p
+​ log p
+​ =
+i=1
+∑
+l
+i
+i
+−
+​p
+​ log
+​
+i=1
+∑
+l
+i
+p
+​i
+q
+​i
+(8)
+P
+Q
+KL divergence measures how much uncertainty is increased in the unobserved dataset.
+✍️
+How can we make use of Bayes' Rule for Classification?
+We want to maximise the posterior probability of observations
+This method is named MAP estimation (Maximum a posteriori)
+The posterior is simply the likelihood times the prior and then normalised, i.e.
+where 
+﻿are considered as a sample / samples with engaged attributes
+p(c∣x) =
+​ =
+p(x)
+p(c)p(x ∣c)
+​
+​p x
+​ ∣c
+p(x)
+p(c)
+i=1
+∏
+l
+(
+i
+)
+(9)
+x = (x
+​, x , … , x
+​)
+1
+2
+l
+p(c∣x) ∝p(c)p(x∣c)
+(10)
+Lecture 5 - Counting Theories & Naive Bayes - 5
+
+=== Page 6 ===
+According to Law of Large Numbers, the prior probability can be taken as the probability 
+resulted from the frequency of observations
+So we only care about how to find the model likelihood
+As we have no candidate models yet, it is not easy to find model likelihood as the probability 
+of observing samples according to an existing model
+Naive Bayes Classifier
+As the class distributions with different conditions are observable, we can find 
+﻿directly
+Naive Bayes Classifier simplifies the way to calculate
+﻿by assuming elements in the 
+feature vector (attributes) x are independent to each other, i.e.
+where 
+﻿
+Example
+We have the following information
+p(x∣c)
+p(x∣c)
+p(x∣c) = p(x
+​∣c)p(x
+​∣c) … p(x
+​∣c)
+1
+2
+l
+(11)
+x = (x
+​, x
+​, … , x
+​)
+1
+2
+l
+Lecture 5 - Counting Theories & Naive Bayes - 6
+
+=== Page 7 ===
+Will you play on the day of Mild?
+Example
+Semi-Naive Bayes Classifier
+Naive Bayes assumes all conditions / features are independent to each other, which never 
+happens
+Semi-Naive Bayes allows dependencies between features
+Overcast
+Hot
+High
+False
+Yes
+Overcast
+Cool
+Normal
+True
+Yes
+Overcast
+Mild
+High
+True
+Yes
+Overcast
+Hot
+Normal
+False
+Yes
+Rainy
+Mild
+High
+False
+Yes
+Rainy
+Cool
+Normal
+False
+Yes
+Rainy
+Cool
+Normal
+True
+No
+Rainy
+Mild
+Normal
+False
+Yes
+Rainy
+Mild
+High
+True
+No
+Sunny
+Hot
+High
+True
+No
+Sunny
+Hot
+High
+False
+No
+Sunny
+Mild
+High
+False
+No
+Sunny
+Cool
+Normal
+False
+Yes
+Sunny
+Mild
+Normal
+True
+Yes
+Will the following condition be considered as a proper day for playing?
+Sunny, Windy
+Overcast, Normal Humidity & Cool
+What about the following case?
+Overcast, Windy & Cool
+Outlook
+Temprature
+Humidity
+Windy
+Play
+Lecture 5 - Counting Theories & Naive Bayes - 7
+
+=== Page 8 ===
+Bayesian Network
+The dependencies between features could be very complicated.
+Baysian Network uses Directed Acyclic Graph (DAG) to show such dependencies, which is also 
+known as Bayesian Graphical Model
+The idea of Bayesian Graphical model is to factorise the joint probability distribution to more 
+readable conditional probability distribution, which benefits the modelling algorithm  (especially 
+forsemantic modelling)
+The learning of structure, parameters and queries are all academic problems
+Lecture 5 - Counting Theories & Naive Bayes - 8
+

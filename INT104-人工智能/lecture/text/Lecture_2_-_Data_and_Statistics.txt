@@ -1,0 +1,130 @@
+=== Page 1 ===
+INT104 Artificial Intelligence
+Data and Statistics
+Critical Thinking and Statistics
+Comparision via Statistics
+Critical Thinking and Statistics 
+Sampling and Statistics
+Lecture 2 - Data and Statistics
+Dr. Shengchen Li
+Associate Professor
+Department of Intelligence Science
+Xi'an Jiaotong-Liverpool University
+Now Discuss: Is the difference significant or minor? Why?
+📌
+In you opinion, how should the data be collected?
+📌
+Should we collect the data online?
+Should we collect the data via YouTube?
+Should we collect the data on high street?
+12
+星期四
+Lecture 2 - Data and Statistics - 1
+
+=== Page 2 ===
+Experiment Design Matters
+Analysis
+Conclusion
+Terms
+Statistics
+Voluntary response sample
+Survivorship Bias
+Statistical Significance
+Potential Threats of Data Collection
+Correlation does not imply causation
+Sample Collection Reported instead of Measured
+Biased Question
+Low Response / Non-sense Response
+Data Types
+You are going to survey the average mark of INT104. After the exam, you interview your 
+classmates for their score. Is the average mark you obtained reliable?
+
+Background
+What's the aim of the study?
+Is the data collected biased?
+Is the data representative?
+What is the relationship between AI and statistics?
+
+What problems are there with voluntary response sample?
+
+Lecture 2 - Data and Statistics - 2
+
+=== Page 3 ===
+Quantitative Vs Categorical
+Discrete Vs Continuous
+Levels of Measurement
+Finite Discrete Vs Infinite Discrete Vs Continuous
+Missing Data
+Delete Cases
+Experiment Design
+Parameter → Description of a Population
+Statistic → Description of a Sample
+📌
+What could you do if some data is imcomplete?
+?
+Impute Missing Values
+Is that safe and accurate?
+
+Replication
+Blindness (and Referenced)
+Randomness
+Convinence Sampling
+Systemetic Sampling
+Stratified Sampling
+Cluster Sampling
+Experiment Design could Consider 
+Multiples Ways of Grouping
+
+Lecture 2 - Data and Statistics - 3
+
+=== Page 4 ===
+Advanced Experiment Design
+Completely Randomised Experimental Design
+Randomised Block Design
+Matched Pairs Design
+Rigorously Controlled Design
+Data Observation
+Observe the following data 
+Histogram
+List a few cases that may cause bias from sampling
+📌
+Now discuss how to describe the data:
+Centre
+Variation
+Distribution → Histogram
+Outliers
+Time
+How do we decide the boundaries of bins?
+📌
+Lecture 2 - Data and Statistics - 4
+
+=== Page 5 ===
+How do you use statistics to show the relative length of commute time?
+Histogram
+Common Distribution
+Lecture 2 - Data and Statistics - 5
+
+=== Page 6 ===
+Normal Distribution
+Lecture 2 - Data and Statistics - 6
+
+=== Page 7 ===
+Skewness 
+Kurtosis
+Scatter Plot
+Lecture 2 - Data and Statistics - 7
+
+=== Page 8 ===
+Correlation Coefficients
+Regression
+Lecture 2 - Data and Statistics - 8
+
+=== Page 9 ===
+Boxplot
+Boxplot
+Lecture 2 - Data and Statistics - 9
+
+=== Page 10 ===
+Boxplot with Outliers
+Lecture 2 - Data and Statistics - 10
+

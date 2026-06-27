@@ -1,0 +1,307 @@
+=== Page 1 ===
+INT104 Artificial Intelligence
+Data Observation Techniques
+Too many features
+How PCA Works  
+Lecture 6 - Data Observation Techniques
+PCA, Correlation and Regression
+Dr. Shengchen Li
+Associate Professor
+Department of Intelligence Science
+Xi'an Jiaotong-Liverpool University
+Dimensionality Reduction:  
+Reduce complex datasets to fewer 
+variables while preserving critical 
+information.  
+Visualization:  
+Project high-dimensional data onto 
+2D/3D plots for intuitive exploration.  
+Noise Reduction:  
+Discard low-variance components (often 
+noise).  
+Multicollinearity Mitigation:  
+Create orthogonal (uncorrelated, 
+independent) features for downstream 
+modeling.  
+9
+2026
+Lecture 6 - Data Observation Techniques - 1
+
+=== Page 2 ===
+PCA Simplified
+PCA
+The Core Idea  
+PCA finds new axes (principal 
+components) that:  
+Maximize variance in the data.  
+Are mutually orthogonal 
+(uncorrelated).  
+1.
+2.
+Standardise Data:  
+1.
+Scale features (mean=0, std=1).  
+Compute Covariance Matrix:  
+2.
+Quantify feature relationships.  
+Eigen Decomposition:  
+3.
+Extract eigenvectors (PC directions) and 
+eigenvalues (variance explained).  
+Project Data:  
+4.
+Transform data onto selected PCs.  
+X = W H
+T
+ is a basis
+H
+Lecture 6 - Data Observation Techniques - 2
+
+=== Page 3 ===
+PCA
+Real-World Applications  
+Where PCA Shines  
+Linearity Assumption:  
+PCA captures linear relationships only.  
+Scale Sensitivity:  
+Standardisation is critical (use correlation matrix for unit-variant features).  
+Interpretability:  
+PCs are mathematical constructs; domain context is needed to assign meaning.  
+Outlier Vulnerability:  
+Extreme values skew variance maximization.  
+deepnote.com
+https://deepnote.com/app/auditory-intelligence-computing-0b7e/INT104-2025-530324ac-020c-456b-8be5-a3fafffa0d0e…
+Genomics:  
+Reduce 20,000 genes to key components driving disease.  
+Finance:  
+Identify latent market risk factors from asset returns.  
+Computer Vision:  
+Eigenfaces for facial recognition (compressing pixel data).  
+Lecture 6 - Data Observation Techniques - 3
+
+=== Page 4 ===
+Case Study:
+How do you determine the value of k in GMM?
+Independent Component Analysis
+Non-negative Matrix Factorisation
+Anomaly Detection:  
+Outliers deviate from dominant PCs.  
+Lecture 6 - Data Observation Techniques - 4
+
+=== Page 5 ===
+Correlation
+What is the correlation?
+Identify Correlation
+A correlation exists between two variables when the values of one variable are somehow 
+associated with the values of the other variable.
+A linear correlation exists between two variables when there is a correlation and the 
+plotted points of paired data result in a pattern that can be approximated by a straight line.
+Lecture 6 - Data Observation Techniques - 5
+
+=== Page 6 ===
+Pearson's Correlation Coefficient
+Properties of the Linear Correlation Coefficient 
+The value of r is always between -1 and 1 inclusive. That is, 
+﻿.
+Example of Correlation Coefficient
+r =
+​
+​
+n(
+x −(
+x)
+​
+∑
+2
+∑
+2
+n(
+y ) −(
+y)
+∑
+2
+∑
+2
+n(
+xy) −(
+x)(
+y)
+∑
+∑
+∑
+1.
+−1 ≤r ≤1
+If all values of either variable are converted to a different scale, the value of 
+﻿
+2.
+r
+does not change.
+The value of r is not affected by the choice of 
+﻿ or 
+﻿. Interchange all 
+﻿values
+3.
+x
+y
+x
+Lecture 6 - Data Observation Techniques - 6
+
+=== Page 7 ===
+﻿is very sensitive to outliers in the sense that a single outlier could dramatically affect its 
+value.
+Spurious Correlation
+Does high correlation value leads to causality?
+Does averaged correlation coefficients lead to the (non-)existence of correlation? 
+Does a low correlation coefficient lead to the lack of correlation?
+Regression
+Given a collection of paired sample data, the regression line (or line of best fit, or least- squares 
+line) is the straight line that “best” fits the scatterplot of the data. 
+Regression
+Given
+we have
+and 
+﻿values, and the value of 
+﻿will not change.
+y
+r
+﻿measures the strength of a linear relationship. It is not designed to measure
+4. r
+the strength of a relationship that is not linear.
+5. r
+There are other types of correlation coefficients
+Now think about how to measure the "fitness" in the definition
+​ =
+y^
+b
+​ +
+0
+b y
+1
+​ =
+y^
+b
+​ +
+0
+b y
+1
+b
+​ =
+1
+r
+​
+s
+​x
+s
+​y
+b
+​ =
+0
+​ −
+yˉ
+b
+​1xˉ
+Lecture 6 - Data Observation Techniques - 7
+
+=== Page 8 ===
+Outliers and Influential Points
+How do we find out outliers?
+Residuals 
+In a scatterplot, an outlier is a point lying far away from the other data points.
+Paired sample data may include one or more influential points, which are points that 
+strongly affect the graph of the regression line.
+For a pair of sample x and y values, the residual is the difference between the observed 
+sample value of y and the y value that is predicted by using the regres- sion equation. 
+That is,
+Residual = Observed y −Predicted y = y −
+​y^
+Lecture 6 - Data Observation Techniques - 8
+
+=== Page 9 ===
+Residual Plot
+Multiple Regression Equation
+A multiple regression equation expresses a linear relationship between a response variable 
+﻿ and 
+two or more predictor variables 
+﻿. The general form of a multiple regression 
+equation obtained from sample data is
+Logistic Regression 
+A straight line satisfies the least-squares property if the sum of the squares of the 
+residuals is the smallest sum possible.
+A residual plot is a scatterplot of the 
+﻿ values after each of the y-coordinate values 
+has been replaced by the residual value 
+﻿ (where 
+﻿ denotes the predicted value of 
+﻿). That is, a residual plot is a graph of the points 
+﻿.
+(x, y)
+y −
+​y^
+​y^
+y
+(x, y −
+​)
+y^
+What residual plot do we pursue?
+y
+(x
+​, x
+​, … , x
+​)
+1
+2
+k
+​ =
+y^
+b
+​ +
+0
+b
+​x +
+1
+b
+​x +
+2
+… + b
+​x
+​
+k
+k
+Logistic Regression uses the Logistic Function to transform a linear combination of input 
+features into a probability between 0 and 1.
+P(Y = 1) =
+​
+(1 + e
+)
+−z
+1
+Lecture 6 - Data Observation Techniques - 9
+
+=== Page 10 ===
+Non-linear Regression
+Discussion
+Where 
+﻿ (the linear combination)
+z = β
+​ +
+0
+β
+​X
+​ +
+1
+1
+β
+​X
+​ +
+2
+2
+... + β
+​X
+​
+p
+p
+In which case we could use regression?
+- Can we use regression for classification?
+- What if we need classification with multiple-class? 
+Lecture 6 - Data Observation Techniques - 10
+
