@@ -1,0 +1,279 @@
+=== Page 1 ===
+Question: K-Means Clustering Calculation (15 Marks)
+Consider the following dataset of 6 points in 2-dimensional space:
+You want to partition these points intok = 2 clusters using the k-means algorithm. The initial 
+centroids are:
+Centroid C1: (1, 2)
+Centroid C2: (11, 10)
+Perform 2 iterations of calculation and specify whether the algorithm has converged after iteration 
+2.
+Use city-block distance for calculation, e.g., 
+﻿.
+Question: Naive Bayes Classification (15 Marks)
+A bank is building a simple fraud-detection system to classify whether a credit-card 
+transaction is Fraud = Yes/No using two binary features. The training dataset is:
+Lecture 12 - Revision
+1.
+﻿
+1
+2
+﻿
+2
+2
+﻿
+1
+1
+﻿
+11
+10
+﻿
+12
+11
+﻿
+10
+9
+P
+​1
+P
+​2
+P
+​3
+P
+​4
+P
+​5
+P
+​6
+D(P
+​, P
+​) =
+m
+n
+∣P
+​ −
+m
+​x
+P
+​∣+
+n
+​x
+∣P
+​ −
+m
+​y
+P
+​∣
+n
+​y
+Solution
+2.
+Point
+x
+y
+Lecture 12 - Revision - 1
+
+=== Page 2 ===
+A new transaction has International = Yes and High Amount = Yes. Using the Naive Bayes 
+classifier (no smoothing unless stated), predict whether the transaction is Fraud. Show your 
+calculation of the prior and likelihood terms.
+Question: Confusion Matrix & Classification Metrics (15 Marks)
+A binary classifier is used to detect whether a chest X-ray indicatesPneumonia (Positive)orNo 
+Pneumonia (Negative). On a test set of250 X-rays, the model produced the following outcomes:
+True Positives (TP) = 60
+False Positives (FP) = 15
+False Negatives (FN) = 25
+True Negatives (TN) = 150
+Tasks:
+Construct theconfusion matrix (Actual vs Predicted) and clearly label TP, FP, FN, TN. (4 Marks)
+Compute theF1-score: Harmonic mean of precision and recall: 
+﻿. (2 Marks)
+1
+Yes
+Yes
+Yes
+2
+Yes
+No
+Yes
+3
+No
+Yes
+Yes
+4
+No
+No
+No
+5
+No
+No
+No
+6
+Yes
+Yes
+Yes
+7
+No
+Yes
+No
+8
+Yes
+No
+No
+Solution
+3.
+1.
+Compute the following metrics and show your working: (4 Marks)
+2.
+Accuracy: Overall proportion correct: 
+﻿.
+Precision: Of predicted positives, the fraction that are truly positive: 
+﻿.
+Recall (Sensitivity): Of actual positives, the fraction correctly found: 
+﻿.
+Specificity: Of actual negatives, the fraction correctly rejected: 
+﻿.
+(TP + TN)/(TP + FP + FN + TN)
+TP/(TP + FP)
+TP/(TP + FN)
+TN/(TN + FP)
+3.
+2PR/(P + R)
+Transacti
+on
+Feature 1 
+(Internatio
+nal?)
+Feature 2 
+(High 
+Amount?)
+Fraud
+Lecture 12 - Revision - 2
+
+=== Page 3 ===
+If the decision threshold is increased andFP decreases by 8whileFN increases by 8(assume 
+total stays 250), recomputeprecisionandrecall, and state which one improved and which one 
+worsened. (5 Marks)
+Question: Hierarchical Clustering Calculation (15 Marks)
+Consider the following dataset of 5 points in 2-dimensional space:
+Performagglomerative hierarchical clusteringusingsingle linkage (minimum distance) until only 2 
+clusters remain.
+Use city-block distance for calculation, e.g., 
+﻿.
+Draw the dendrogram showing the hierarchical structure and determine 2 clusters according to 
+similarity between samples.
+Question: Likelihood Function
+Question: Correlation Analysis
+A researcher wants to study the relationship between weekly study time and exam score for 8 
+students. The data are:
+Study time 
+﻿ (hours): 1, 2, 3, 5, 5, 6, 7, 9
+4.
+Solution
+4.
+A
+1
+1
+B
+2
+3
+C
+4
+2
+D
+7
+6
+E
+9
+7
+D(P
+​, P
+​) =
+i
+j
+∣P
+​ −
+i
+​x
+P
+​∣+
+j
+​x
+∣P
+​ −
+i
+​y
+P
+​∣
+j
+​y
+Solution
+You toss a coin 8 times and observe 3 Heads and 5 Tails. Assume each toss is independent 
+and the probability of Heads is 
+﻿.
+5.
+p
+Write the likelihood function 
+﻿ for this dataset.
+Compute the likelihood values 
+﻿ and 
+﻿, and state which value of 
+﻿ better 
+explains the observed data.
+L(p)
+L(0.4)
+L(0.6)
+p
+Solution
+x
+Point
+x
+y
+Lecture 12 - Revision - 3
+
+=== Page 4 ===
+Exam score 
+﻿ (out of 100): 50, 55, 58, 66, 69, 73, 76, 85
+Based on your result, do you agree the following statement? "Increasing study time causes 
+higher exam scores."
+Short Answer Questions:
+Review GMM and SVM.
+y
+Calculate the correlation between 
+﻿ and 
+﻿ with Pearson's correlation coefficient. The formula 
+for Pearson’s correlation coefficient is:
+1.
+x
+y
+﻿
+r =
+​
+​
+​
+​(x
+​−)
+∑i=1
+n
+i
+xˉ 2
+​(y
+​−
+​)
+∑i=1
+n
+i
+yˉ 2
+​(x
+​−)(y
+​−
+​)
+∑i=1
+n
+i
+xˉ
+i
+yˉ
+2.
+Solution
+Lecture 12 - Revision - 4
+

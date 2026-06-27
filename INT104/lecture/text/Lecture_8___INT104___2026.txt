@@ -1,0 +1,824 @@
+=== Page 1 ===
+INT104 Artificial Intelligence
+Lecture 8: Non-parametric Learning
+Dr. Shengchen Li
+Department of Intelligent Science
+Xi’an Jiaotong-Liverpool University
+1 / 46
+
+=== Page 2 ===
+Outline
+Non-parametric modeling: motivation and characteristics
+k-Nearest Neighbour (kNN): idea, pros/cons, exercise
+Decision trees: basic procedure and feature selection metrics
+Hierarchical (agglomerative) clustering
+k-means clustering and hyper-parameter selection
+2 / 46
+
+=== Page 3 ===
+Non-parametric Modeling
+Non-parametric models can be used with arbitrary distributions.
+No need to assume a known parametric form for the underlying density.
+Can handle multimodal distributions (common in practice).
+Intuition: model complexity can grow with data, instead of being fixed by a small set of parameters.
+3 / 46
+
+=== Page 4 ===
+Pros and Cons (Non-parametric Methods)
+Pros
+No assumptions needed about distributions ahead of time (generality).
+With enough samples, can converge to arbitrarily complicated target densities.
+Cons
+Sample complexity may be very large (often grows exponentially with dimensionality).
+Sensitive to window size / neighborhood size:
+Too small ⇒most volume empty (high variance).
+Too large ⇒important variations lost (high bias).
+Potentially severe computation time and storage requirements.
+4 / 46
+
+=== Page 5 ===
+k-Nearest Neighbour (kNN): Core Idea
+Training set: data points with known class labels.
+For a new data point 𝑥:
+1
+Compute similarity/distance from 𝑥to each training sample.
+2
+Select the 𝑘most similar samples (the 𝑘nearest neighbours).
+3
+Predict label by majority vote among neighbours’ labels.
+5 / 46
+
+=== Page 6 ===
+kNN: Adaptive Window View
+Goal: solution when the best window function is unknown.
+Let the cell (neighborhood) volume depend on the training data.
+Center a cell around 𝑥and grow it until it contains 𝑘𝑛samples.
+Those 𝑘𝑛samples are the nearest neighbours of 𝑥.
+6 / 46
+
+=== Page 7 ===
+kNN Exercise (Play Tennis)
+Outlook
+Temperature
+Humidity
+Windy
+Play
+sunny
+85
+85
+1.0
+maybe
+sunny
+80
+90
+3.0
+no
+overcast
+83
+86
+0.8
+yes
+rainy
+70
+96
+0.2
+maybe
+rainy
+68
+80
+0.1
+yes
+rainy
+65
+70
+2.8
+no
+overcast
+64
+65
+2.6
+yes
+sunny
+72
+95
+0.3
+no
+sunny
+69
+70
+0.5
+yes
+rainy
+75
+80
+0.4
+maybe
+sunny
+75
+70
+2.2
+yes
+overcast
+72
+90
+2.4
+maybe
+overcast
+81
+75
+0.0
+yes
+rainy
+71
+91
+2.9
+no
+Query: Will we play in the case of (sunny, 74, 82)?
+7 / 46
+
+=== Page 8 ===
+In-class Discussion (kNN)
+What decision you made that affects the prediction?
+Typical key choices:
+Distance metric (e.g., Euclidean, Manhattan, mixed categorical + numerical)
+Feature scaling / normalization
+Handling categorical features (e.g., one-hot encoding)
+Choice of 𝑘
+Weighted vs unweighted vote
+8 / 46
+
+=== Page 9 ===
+Diagram: Temperature vs Humidity (Outlook as Marker, Label as Color)
+Temperature
+Humidity
+S
+S
+S
+S
+S
+O
+O
+O
+O
+R
+R
+R
+R
+R
+𝑥𝑞
+Legend
+Color = label: Yes, No, Maybe
+Marker text: S=sunny,
+O=overcast, R=rainy
+Black star = query (74, 82) with
+Outlook=sunny
+kNN idea: find the 𝑘closest points to the
+star using the mixed distance.
+9 / 46
+
+=== Page 10 ===
+Different Weights for Outlook
+10 / 46
+
+=== Page 11 ===
+Find the k Nearest Neighbours (Example with 𝑘= 3)
+For this query, the nearest neighbours (by the distance above) are:
+Rank
+Outlook
+Temp
+Humidity
+Play
+1
+sunny
+75
+70
+yes
+2
+sunny
+85
+85
+maybe
+3
+sunny
+80
+90
+no
+Majority vote among 3-NN:
+{yes, maybe, no} ⇒tie (1–1–1)
+Tie-breaking options (choose one policy):
+Use distance-weighted voting (closer neighbour counts more)
+Choose a different 𝑘(e.g., 𝑘= 1)
+11 / 46
+
+=== Page 12 ===
+What Decisions Affect the Prediction?
+In this example, the prediction depends on:
+How we encode the categorical feature (Outlook) and its penalty weight
+Feature scaling for Temperature/Humidity
+Choice of 𝑘
+Tie-breaking rule (especially important with multi-class labels: yes/no/maybe)
+Whether we use weighted or unweighted voting
+12 / 46
+
+=== Page 13 ===
+Decision Tree: Basic Procedure
+Training dataset: 𝐷= {𝑥1, 𝑥2, … , 𝑥𝑛} with labels 𝑌= {𝑦1, … , 𝑦𝑛},
+𝑥𝑖= (𝑥𝑖1, 𝑥𝑖2, … , 𝑥𝑖𝑚)
+Given a node (root node), determine whether it is a leaf by checking:
+The node contains no samples
+All samples in the node belong to a single class
+A common attribute is shared / no useful split
+Attributes remain to be further analyzed
+Leaf decision is often determined by voting (majority class).
+Select an attribute 𝑥𝑗to build a branch for each attribute value and recurse.
+13 / 46
+
+=== Page 14 ===
+Decision Tree Example: Play Tennis
+Rule sketch
+Root: Outlook (Sunny / Overcast / Rainy)
+If Overcast: Yes
+If Sunny: check Humidity
+High →No
+Normal →Yes
+If Rainy: check Windy
+True →No
+False →Yes
+Outlook?
+Humidity?
+Overcast
+Yes
+Windy?
+High
+No
+Normal
+Yes
+True
+No
+False
+Yes
+Sunny
+Overcast Rainy
+High
+Normal
+True
+False
+14 / 46
+
+=== Page 15 ===
+Selecting the Feature to Split
+How could we use metrics to select the feature to be analyzed?
+Goal: choose the feature that is most distinguishable / best performance.
+Common selection metrics:
+Entropy / Information Gain
+Gain Ratio
+Gini Index
+15 / 46
+
+=== Page 16 ===
+Entropy and Information Gain
+Entropy
+entropy(𝐷) = −
+|𝑌|
+∑
+𝑘=1
+𝑝𝑘log2 𝑝𝑘
+Information Gain
+Gain(𝐷, 𝑥∗
+𝑗) = entropy(𝐷) −
+𝑉
+∑
+𝑣=1
+|𝐷𝑣|
+|𝐷| entropy(𝐷(𝑣))
+𝑉: number of values for attribute 𝑥∗
+𝑗
+𝐷𝑣: subset where attribute takes value 𝑣
+16 / 46
+
+=== Page 17 ===
+Gain Ratio (Selection Metric)
+Gain Ratio
+GainRatio(𝐷, 𝑥∗
+𝑗) = Gain(𝐷, 𝑥∗
+𝑗)
+IV(𝑎)
+Intrinsic Value
+IV(𝑎) = −
+𝑉
+∑
+𝑣=1
+|𝐷𝑣|
+|𝐷| log2 (|𝐷𝑣|
+|𝐷| )
+17 / 46
+
+=== Page 18 ===
+Gini Index (Selection Metric)
+Gini Index idea (impurity measure)
+Often used in CART-style decision trees.
+Lower impurity after split is better.
+A common form:
+Gini(𝐷) = 1 −
+|𝑌|
+∑
+𝑘=1
+𝑝2
+𝑘
+and choose splits that reduce impurity the most (weighted by subset sizes).
+18 / 46
+
+=== Page 19 ===
+Hierarchical Clustering (Agglomerative)
+General outline:
+1
+For 𝑛objects 𝑣1, … , 𝑣𝑛, assign each to a singleton cluster 𝐶𝑖= {𝑣𝑖}.
+2
+Define cluster similarity / distance measure (e.g., Euclidean, cosine).
+3
+Repeat until one cluster remains:
+Identify the two most similar clusters (ties possible).
+Merge them: remove 𝐶𝑗, 𝐶𝑘and add 𝐶𝑗∪𝐶𝑘.
+4
+Use a dendrogram to visualize merge sequence.
+Distance between clusters 𝐷(𝐶𝑖, 𝐶𝑗) can be defined in multiple ways:
+Single linkage: minimum distance between any pair of points across clusters.
+Complete linkage: maximum distance between any pair of points across clusters.
+Others: average linkage, median linkage, etc.
+19 / 46
+
+=== Page 20 ===
+Demonstration Dataset (Distance Matrix)
+We will use 5 objects: 𝐴, 𝐵, 𝐶, 𝐷, 𝐸with distances:
+A
+B
+C
+D
+E
+A
+0
+B
+8
+0
+C
+3
+6
+0
+D
+5
+5
+8
+0
+E
+13
+10
+2
+7
+0
+We will demonstrate single linkage first.
+20 / 46
+
+=== Page 21 ===
+Step 0: Initialize Clusters
+Start with singleton clusters:
+{𝐴}, {𝐵}, {𝐶}, {𝐷}, {𝐸}
+Find the smallest distance in the matrix (excluding zeros on diagonal):
+min 𝑑(𝑖, 𝑗) = 𝑑(𝐶, 𝐸) = 2
+21 / 46
+
+=== Page 22 ===
+Step 1: Merge the Closest Pair
+Merge: {𝐶} and {𝐸} at distance 2.
+New cluster:
+𝐶1 = {𝐶, 𝐸}
+Remaining clusters:
+{𝐴}, {𝐵}, {𝐷}, {𝐶, 𝐸}
+Let’s use 𝐹to donate the new mini-cluster.
+22 / 46
+
+=== Page 23 ===
+Update Distances (Single Linkage)
+For single linkage, distance from new cluster to another cluster is the minimum pairwise distance.
+Compute:
+𝐷(𝐹, 𝐴) = min(𝑑(𝐶, 𝐴), 𝑑(𝐸, 𝐴)) = min(3, 13) = 3
+𝐷(𝐹, 𝐵) = min(𝑑(𝐶, 𝐵), 𝑑(𝐸, 𝐵)) = min(6, 10) = 6
+𝐷(𝐹, 𝐶) = min(𝑑(𝐶, 𝐷), 𝑑(𝐸, 𝐷)) = min(8, 7) = 7
+23 / 46
+
+=== Page 24 ===
+Step 2: Next Merge
+Now consider distances among clusters:
+A
+B
+D
+F
+A
+0
+B
+8
+0
+D
+5
+5
+0
+F
+3
+6
+7
+0
+Smallest is 3:
+Merge {𝐴} with {𝐹} at distance 3
+i.e., New cluster:
+𝐺= {𝐴, 𝐶, 𝐸}
+24 / 46
+
+=== Page 25 ===
+Update Distances After Step 2 (Single Linkage)
+Compute distances from 𝐺= {𝐴, 𝐶, 𝐸} to the remaining singletons {𝐵}, {𝐷}:
+𝐷(𝐺, {𝐵}) = min(𝑑(𝐴, 𝐵), 𝑑(𝐶, 𝐵), 𝑑(𝐸, 𝐵)) = min(8, 6, 10) = 6
+𝐷(𝐺, {𝐷}) = min(𝑑(𝐴, 𝐷), 𝑑(𝐶, 𝐷), 𝑑(𝐸, 𝐷)) = min(5, 8, 7) = 5
+Remaining clusters:
+{𝐵}, {𝐷}, {𝐴, 𝐶, 𝐸}
+25 / 46
+
+=== Page 26 ===
+Step 3: Next Merge
+Current inter-cluster distances:
+𝑑(𝐵, 𝐷) = 5,
+𝐷(𝐺, 𝐷) = 5,
+𝐷(𝐺, 𝐵) = 6
+B
+D
+G
+B
+0
+D
+5
+0
+G
+6
+5
+0
+Option (tie-break): merge {B} and {D} at distance 5.
+𝐻= {𝐵, 𝐷}
+26 / 46
+
+=== Page 27 ===
+Step 4: Final Merge
+Now only two clusters remain:
+𝐺= {𝐴, 𝐶, 𝐸},
+𝐻= {𝐵, 𝐷}
+Single linkage distance:
+𝐷(𝐺, 𝐻) = min{𝑑(𝐴, 𝐵), 𝑑(𝐴, 𝐷), 𝑑(𝐶, 𝐵), 𝑑(𝐶, 𝐷), 𝑑(𝐸, 𝐵), 𝑑(𝐸, 𝐷)}
+= min{8, 5, 6, 8, 10, 7} = 5
+Final merge at distance 5.
+27 / 46
+
+=== Page 28 ===
+Dendrogram (Single Linkage, One Valid Tie-break)
+Below is a schematic dendrogram (not to exact scale), showing the merge sequence:
+A
+B
+C
+D
+E
+Note: because of ties, multiple dendrograms can be correct depending on merge order.
+28 / 46
+
+=== Page 29 ===
+What Changes with Complete / Average Linkage?
+Single linkage tends to create chains (can link clusters via one close pair).
+Complete linkage prefers compact clusters (depends on farthest pair).
+Average linkage is a compromise (uses mean distance across pairs).
+Same data + different linkage ⇒potentially different merge order and dendrogram.
+29 / 46
+
+=== Page 30 ===
+Algorithm Summary (Agglomerative Clustering)
+1
+Initialize clusters as singletons.
+2
+Choose linkage rule to compute 𝐷(𝐶𝑎, 𝐶𝑏).
+3
+Repeat:
+Find pair (𝐶𝑎, 𝐶𝑏) with minimal 𝐷(𝐶𝑎, 𝐶𝑏)
+Merge them, record the merge distance (height in dendrogram)
+Update distances between the new cluster and all others
+4
+Stop when one cluster remains.
+30 / 46
+
+=== Page 31 ===
+How to Read a Dendrogram
+Leaves: individual data points.
+Each merge: a horizontal line at height equal to merge distance.
+Cutting the dendrogram at a chosen height gives a clustering.
+The chosen cut height corresponds to an implicit number of clusters.
+31 / 46
+
+=== Page 32 ===
+k-means: Algorithm
+k-means: group objects into 𝑘clusters based on feature similarity.
+Choose 𝑘(positive integer) and initialize centroids.
+Iterate until convergence:
+1
+Assign each sample to the cluster with the nearest centroid.
+2
+Recompute centroid of each cluster.
+Stop when no samples change cluster assignment after an iteration.
+32 / 46
+
+=== Page 33 ===
+Example of k-means (2 Clusters)
+Given the 7 points:
+(1.0, 1.0), (1.5, 2.0), (3.0, 4.0), (5.0, 7.0), (3.5, 5.0), (4.5, 5.0), (3.5, 4.5)
+Use k-means to divide all points into two clusters (𝑘= 2).
+Show:
+initialization (chosen centroids),
+assignment step,
+centroid update step,
+iterations until convergence.
+33 / 46
+
+=== Page 34 ===
+k-means Procedure (with City-block Distance)
+Repeat until convergence:
+1
+Initialize 2 centroids 𝜇1, 𝜇2
+2
+Assign each point to nearest centroid by 𝑑1
+3
+Update centroids as the mean of assigned points
+Note: Standard k-means updates use the mean (works best with Euclidean). Here we keep the
+standard k-means update (mean) but use city-block distance for assignment, as requested.
+34 / 46
+
+=== Page 35 ===
+Step 0: Plot the Points
+𝑥
+𝑦
+𝐴(1, 1)
+𝐵(1.5, 2)
+𝐶(3, 4)
+𝐷(5, 7)
+𝐸(3.5, 5) 𝐹(4.5, 5)
+𝐺(3.5, 4.5)
+35 / 46
+
+=== Page 36 ===
+Initialization
+Choose initial centroids (common simple choice: pick two points):
+𝜇(0)
+1
+= (1, 1)
+(use point 𝐴),
+𝜇(0)
+2
+= (5, 7)
+(use point 𝐷).
+We will now assign each point to the nearer centroid using city-block distance.
+36 / 46
+
+=== Page 37 ===
+Iteration 1: Assignment (City-block Distances)
+Compute 𝑑1(point, 𝜇(0)
+1 ) and 𝑑1(point, 𝜇(0)
+2 ).
+Point
+𝑑1(⋅, 𝜇(0)
+1 =(1, 1))
+𝑑1(⋅, 𝜇(0)
+2 =(5, 7))
+Cluster
+𝐴(1, 1)
+0
+|1 −5| + |1 −7| = 10
+1
+𝐵(1.5, 2)
+|0.5| + |1| = 1.5
+|−3.5| + |−5| = 8.5
+1
+𝐶(3, 4)
+|2| + |3| = 5
+|−2| + |−3| = 5
+tie
+𝐷(5, 7)
+10
+0
+2
+𝐸(3.5, 5)
+|2.5| + |4| = 6.5
+|−1.5| + |−2| = 3.5
+2
+𝐹(4.5, 5)
+|3.5| + |4| = 7.5
+|−0.5| + |−2| = 2.5
+2
+𝐺(3.5, 4.5)
+|2.5| + |3.5| = 6
+|−1.5| + |−2.5| = 4
+2
+Tie-breaking (for 𝐶): assign ties to Cluster 1 (any fixed rule is acceptable).
+37 / 46
+
+=== Page 38 ===
+Iteration 1: Clusters After Assignment
+With the tie-breaking above:
+𝒞(1)
+1
+= {𝐴, 𝐵, 𝐶},
+𝒞(1)
+2
+= {𝐷, 𝐸, 𝐹, 𝐺}.
+Now update centroids by the (coordinate-wise) mean:
+𝜇(1)
+𝑗
+=
+1
+|𝒞(1)
+𝑗|
+∑
+𝑥𝑖∈𝒞(1)
+𝑗
+𝑥𝑖.
+38 / 46
+
+=== Page 39 ===
+Iteration 1: Update Centroids (Means)
+Cluster 1:
+𝜇(1)
+1
+= 1
+3[(1, 1) + (1.5, 2) + (3, 4)] = (5.5
+3 , 7
+3) ≈(1.833, 2.333).
+Cluster 2:
+𝜇(1)
+2
+= 1
+4[(5, 7) + (3.5, 5) + (4.5, 5) + (3.5, 4.5)] = (16.5
+4 , 21.5
+4 ) = (4.125, 5.375).
+39 / 46
+
+=== Page 40 ===
+Iteration 2: Re-assignment Using City-block Distance
+Now compute distances to new centroids:
+𝜇(1)
+1
+≈(1.833, 2.333),
+𝜇(1)
+2
+= (4.125, 5.375).
+Point
+𝑑1(⋅, 𝜇(1)
+1 )
+𝑑1(⋅, 𝜇(1)
+2 )
+Cluster
+𝐴(1, 1)
+|−0.833| + |−1.333| = 2.166
+|−3.125| + |−4.375| = 7.5
+1
+𝐵(1.5, 2)
+|−0.333| + |−0.333| = 0.666
+|−2.625| + |−3.375| = 6.0
+1
+𝐶(3, 4)
+|1.167| + |1.667| = 2.834
+|−1.125| + |−1.375| = 2.5
+2
+𝐷(5, 7)
+|3.167| + |4.667| = 7.834
+|0.875| + |1.625| = 2.5
+2
+𝐸(3.5, 5)
+|1.667| + |2.667| = 4.334
+|−0.625| + |−0.375| = 1.0
+2
+𝐹(4.5, 5)
+|2.667| + |2.667| = 5.334
+|0.375| + |−0.375| = 0.75
+2
+𝐺(3.5, 4.5)
+|1.667| + |2.167| = 3.834
+|−0.625| + |−0.875| = 1.5
+2
+Only 𝐶moved (from Cluster 1 to Cluster 2). Continue to update centroids.
+40 / 46
+
+=== Page 41 ===
+Iteration 2: Update Centroids
+Now:
+𝒞(2)
+1
+= {𝐴, 𝐵},
+𝒞(2)
+2
+= {𝐶, 𝐷, 𝐸, 𝐹, 𝐺}.
+Update means:
+𝜇(2)
+1
+= (1, 1) + (1.5, 2)
+2
+= (1.25, 1.5).
+𝜇(2)
+2
+= (3, 4) + (5, 7) + (3.5, 5) + (4.5, 5) + (3.5, 4.5)
+5
+= (3.9, 5.1).
+41 / 46
+
+=== Page 42 ===
+Iteration 3: Check Assignments (Convergence)
+Centroids:
+𝜇(2)
+1
+= (1.25, 1.5),
+𝜇(2)
+2
+= (3.9, 5.1).
+Point
+𝑑1(⋅, 𝜇(2)
+1 )
+𝑑1(⋅, 𝜇(2)
+2 )
+Cluster
+𝐴(1, 1)
+0.25 + 0.5 = 0.75
+2.9 + 4.1 = 7.0
+1
+𝐵(1.5, 2)
+0.25 + 0.5 = 0.75
+2.4 + 3.1 = 5.5
+1
+𝐶(3, 4)
+1.75 + 2.5 = 4.25
+0.9 + 1.1 = 2.0
+2
+𝐷(5, 7)
+3.75 + 5.5 = 9.25
+1.1 + 1.9 = 3.0
+2
+𝐸(3.5, 5)
+2.25 + 3.5 = 5.75
+0.4 + 0.1 = 0.5
+2
+𝐹(4.5, 5)
+3.25 + 3.5 = 6.75
+0.6 + 0.1 = 0.7
+2
+𝐺(3.5, 4.5)
+2.25 + 3.0 = 5.25
+0.4 + 0.6 = 1.0
+2
+Assignments did not change ⇒converged.
+42 / 46
+
+=== Page 43 ===
+Final Result (k=2)
+Cluster 1:
+{(1, 1), (1.5, 2)}
+with centroid 𝜇1 = (1.25, 1.5).
+Cluster 2:
+{(3, 4), (5, 7), (3.5, 5), (4.5, 5), (3.5, 4.5)}
+with centroid 𝜇2 = (3.9, 5.1).
+43 / 46
+
+=== Page 44 ===
+Diagram: Final Clusters (City-block Assignment)
+𝑥
+𝑦
+𝐴
+𝐵
+𝐶
+𝐷
+𝐸
+𝐹
+𝐺
+𝜇1
+𝜇2
+Cluster 1
+Cluster 2
+Centroid
+44 / 46
+
+=== Page 45 ===
+Results and Hyper-parameters
+Determine hyper-parameters:
+Try different 𝑘values: what results do we get?
+Can we decide the best 𝑘for best performance?
+Typical approaches (conceptually):
+Elbow method (within-cluster SSE vs 𝑘)
+Silhouette score
+Validation on downstream task (if clustering is a preprocessing step)
+45 / 46
+
+=== Page 46 ===
+Summary
+Non-parametric methods: flexible, data-driven complexity; trade-offs in sample/computation.
+kNN: local voting; sensitive to 𝑘and distance/feature scaling.
+Decision trees: recursive partitioning; split selection via entropy/gain, gain ratio, gini.
+Clustering: hierarchical (linkage choices) and k-means (choose 𝑘).
+46 / 46
+

@@ -1,0 +1,164 @@
+=== Page 1 ===
+INT104 Artificial Intelligence
+AI Ethics and Future Developement
+AI Systems
+Concerns
+Lecture 11 - AI Ethics and Future 
+Development
+Dr. Shengchen Li
+Associate Professor
+Department of Intelligence Science
+Xi'an Jiaotong-Liverpool University
+Yes
+No
+No
+No
+No
+Try
+Try
+Try
+Try
+Formulate Problem
+Problem Solved?
+Collect Data
+Problem Solved?
+Feature Extraction
+Problem Solved?
+Machine Learning
+Problem Solved?
+System Deployed
+Does it work?
+Fine Tune
+Refine Feature
+New Data
+Refine the Problem
+Problems
+Data Privacy
+Algorithm Bias
+Evaluation Bias
+System Security
+False Media
+Power Consumption of the System
+Data Collection (Bias)
+Data Availability
+Practice
+Anonymisation (Really Work?)
+Know Your Population (Particularly 
+Background Information)
+Know Your Algorithm
+Know Your Preference
+Improve Robustness of the System
+Deepfake Detection
+Algorithm Simplification
+14
+2026
+Lecture 11 - AI Ethics and Future Development - 1
+
+=== Page 2 ===
+Learning with Anonymisation (Federated Learning)
+Ideally, the data could be managed in a centralised manner
+However, the transmission of data take the risk of data leaking
+Data Collection Bias
+Data Collection Bias
+The data is stored in local machines hence could suffer from
+inconsistent feature definition (or data collection)
+inconsistent data quality
+inconsistent feature distribution
+Think about this: what is the main purpose of machine learning?
+
+Essentially, machine learning attempts to set up a mapping between two feature 
+spaces (e.g. label space and data space)
+The label space and the data space needs to be described as a probability distribution
+Next, think about how the training dataset works?
+
+Hopefully, the training dataset could estimate the probability distribution of the real 
+probability distribution.
+But the training dataset never has the same probability distribution with the ground 
+truth (data bias)
+How can we form a good dataset
+Cover enough variety 
+Have enough number
+What if we cannot cover all kinds of varieties?
+Different circumstances means different domains
+Machine learning with domain shifts (a kind of transfer learning)
+Domain generalisation
+Domain adaptation
+Lecture 11 - AI Ethics and Future Development - 2
+
+=== Page 3 ===
+Algorithm Bias
+Thus you need to make the introduced assumptions work well with your problems
+Evaluation Bias
+Different evaluation methods pay attention to different impacts
+System Security
+What if we do not have enough data?
+Few-shot learning / First-shot learning / Zero-shot learning
+When you have used a machine learning algorithm, you are introducing assumptions:
+GMM: all clusters can be approximated by Gaussian distribution
+SVM: there is a feature space that may classify data with a linear boundary
+Naive Bayes: the impact of factors is independent with each other
+Recall the knowledge related to confusion matrix
+Accuracy: related to overall performance
+Precision: quality of positive prediction
+Recall: ability of identify positive class
+Recall what distance measurement we have?
+Euclidean distance (measure absolute distance)
+Cosine distance (measure directional distance)
+Correlation distance (measure temporal distance)
+Lecture 11 - AI Ethics and Future Development - 3
+
+=== Page 4 ===
+Deepfake
+Power Consumption (Environment Friendly)
+As a result, it is necessary to simplify machine learning algorithms wherever possible (especially for 
+deep learning system).
+Future Challenges
+AI systems can be attached: the following actions could mislead an AI system:
+Perturbation: add minor invisible data noise
+Data poisoning: add minor data into a dataset
+......
+AlphaGO has beaten Jie Ke. Is that true?
+
+The power that Jie Ke has consumed —> 500 KCal ~= 0.0005 kWh
+The power that AlphaGO has consumed —> 60 kWh
+Problems
+Feature distributions are not same given 
+different context
+Data Imbalance
+Low Data Availability
+New Classes in Validation Domain
+Auto Adaption in New Environment
+Techniques
+Domain generalisation / Domain 
+adaptation
+Transfer learning
+Few-shot learning / Outlier detection
+Few-shot learning / First-shot learning
+Openset / Zero-shot learning
+Lecture 11 - AI Ethics and Future Development - 4
+
+=== Page 5 ===
+Future Directions  
+Incremental Learning
+Explainable AI (XAI):  
+Interpretability to audit bias sources (e.g., LIME, SHAP).  
+Regulatory Frameworks:  
+EU AI Act, Algorithmic Accountability Bills.  
+Ethics-by-Design:  
+Embed bias checks at every AI lifecycle stage (problem formulation to deployment).  
+Bias
+Amplifies
+Impacts
+Feedback Loop
+Auditing
+Fairness Tools
+Explainability
+Data Collection
+Training
+Algorithm
+Deployment
+Mitigation
+The question is not whether machines can think, but whether humans can design machines that 
+think ethically.
+Lecture 11 - AI Ethics and Future Development - 5
+
